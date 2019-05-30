@@ -1,78 +1,33 @@
 #!/usr/bin/env python
 # coding: utf-8
-
-# In[1]:
-
+#Must install pandas-datareader
 
 import pandas as pd
 from pandas_datareader import data as wb
 
+#Extract and check asset data with yahoo's API, in this case MSFT Stocks, starting 2000/1/1
 MSFT_DATA = wb.DataReader('MSFT', 'yahoo', ('2000/1/1'))
-
-
-# In[2]:
-
-
 MSFT_DATA.head()
-
-
-# In[3]:
-
-
 MSFT_DATA.tail()
 
-
-# In[4]:
-
-
+#Creating a table with values provided by ROR formula
 import matplotlib.pyplot as plt
 
-
-# In[5]:
-
-
 MSFT_DATA['Simple Rates Of Return'] = (MSFT_DATA['Adj Close']/MSFT_DATA['Adj Close'].shift(1)) - 1
-
-
-# In[6]:
-
-
 MSFT_DATA['Simple Rates Of Return'].tail()
 
-
-# In[7]:
-
-
+#Generating graphic
 sror_msft = MSFT_DATA['Simple Rates Of Return'].plot(figsize=(8,5))
 
+#Obtaining anual average rate of return
+#.mean gets daily average
+d_average_r = MSFT_DATA['Simple Rates Of Return'].mean()
+d_average_r
 
-# In[8]:
+a_average_r = MSFT_DATA['Simple Rates Of Return'].mean()*250 #250 trading days in a year
+a_average_r
 
-
-average_r_d = MSFT_DATA['Simple Rates Of Return'].mean()
-
-
-# In[9]:
-
-
-average_r_d
-
-
-# In[10]:
-
-
-average_r_a = MSFT_DATA['Simple Rates Of Return'].mean()*250 #250 trading days in a year
-average_r_a
-
-
-# In[11]:
-
-
+#Rounding and presentation in percentage
 avg_r_a = str(round(average_r_a, 5)* 100) + '%'
-
-
-# In[12]:
-
-
-avg_r_a
+Print = ("Microsoft's anual average rate of return, from 2000/1/1 is " + avg_r_a)
 
