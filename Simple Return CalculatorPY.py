@@ -28,6 +28,6 @@ a_average_r = MSFT_DATA['Simple Rates Of Return'].mean()*250 #250 trading days i
 a_average_r
 
 #Rounding and presentation in percentage
-avg_r_a = str(round(average_r_a, 5)* 100) + '%'
+avg_r_a = str(round(a_average_r, 5)* 100) + '%'
 Print = ("Microsoft's anual average rate of return, from 2000/1/1 is " + avg_r_a)
 
