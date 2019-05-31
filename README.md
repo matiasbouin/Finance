@@ -1,2 +1,2 @@
 # Finance_Python
-Python applied to finance (This is my first repository with actual code)
+Python scripts with financial application (This is my first repository with actual code)
